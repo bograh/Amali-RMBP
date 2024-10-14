@@ -6,3 +6,9 @@ snippets.py
 *.mp3
 django_api
 static/audios/
+.vscode/* 
+!.vscode/settings.json 
+!.vscode/tasks.json 
+!.vscode/launch.json 
+!.vscode/extensions.json 
+.history

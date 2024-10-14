@@ -1,0 +1,165 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Translation API",
+      "version": "1.0.0",
+      "description": "API for text and audio translation."
+    },
+    "paths": {
+      "/api/v1/translate": {
+        "post": {
+          "summary": "Translate text to Twi",
+          "operationId": "translateText",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string",
+                      "example": "Hello, how are you?"
+                    }
+                  },
+                  "required": ["text"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Translation successful",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "success"
+                      },
+                      "translated_text": {
+                        "type": "string",
+                        "example": "Akwabaa, wo ho te sεn?"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid input",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Missing fields"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Internal server error"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/translate-audio": {
+        "post": {
+          "summary": "Transcribe audio to text and then translate to English",
+          "operationId": "translateAudio",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "audio": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  },
+                  "required": ["audio"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Audio transcription and translation successful",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "success"
+                      },
+                      "transcription": {
+                        "type": "string",
+                        "example": "Hello, how are you?"
+                      },
+                      "translation": {
+                        "type": "string",
+                        "example": "Hello, how are you?"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "failed"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Internal server error"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  

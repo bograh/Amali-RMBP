@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import logo from "../assets/logo.svg";
 
 const LoginComponent = () => {
   const [username, setUsername] = useState("");
@@ -57,8 +58,13 @@ const LoginComponent = () => {
   };
 
   return (
-    <div className="border mx-auto">
-      <form onSubmit={handleSubmit}>
+    <div className=" mx-auto mt-[13%] w-[300px] justify-center items-center min-h-screen bg-gray">
+      <div className="mx-auto mb-12">
+        <img src={logo} alt="logo" className="bg-[#000] mx-auto" />
+        <h3 className="mx-auto">Access to generative AI in your language</h3>
+      </div>
+      
+      <form onSubmit={handleSubmit} className ="rounded-xl border px-3 py-7 my-auto space-y-4 ">
         <h1 className="text-sm">LOGIN</h1>
         <p>
           <label>Username</label><br></br>
@@ -67,7 +73,7 @@ const LoginComponent = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
-            className="border"
+            className="border border-gray w-full py-1 rounded-lg pl-2"
           />
         </p>
 
@@ -78,12 +84,18 @@ const LoginComponent = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            className="border"
+            className="border w-full py-1 rounded-lg pl-2"
           />
         </p>
-        <button type="submit" onClick={handleSubmit} disabled={loading}>
+        <button type="submit" onClick={handleSubmit} className="bg-[#004a4f] rounded-xl py-2 w-full text-[#fff]" disabled={loading}>
           {loading ? "Loading..." : "Login"}
         </button>
+
+        <h3>Don't  have an account? <a href="/signup" >Signup</a></h3>
+        <h3 className="w-full border items-center justify-center ml5-auto">OR</h3>
+        {/*Sign in with google */}
+        <button className="bg-[#fff] text-[#000] border rounded-xl py-2 w-full">Sign in with Google</button>
+
       </form>
     </div>
   );

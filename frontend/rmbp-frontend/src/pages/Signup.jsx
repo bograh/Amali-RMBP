@@ -65,7 +65,7 @@ const Signup = () => {
 
   return (
     <div>
-        <form  onSubmit={handleSubmit}>
+        <form className="" onSubmit={handleSubmit}>
 
           <h1>SIGNUP</h1>
             <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Username' />

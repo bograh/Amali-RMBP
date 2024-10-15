@@ -61,11 +61,11 @@ const LoginComponent = () => {
     <div className=" mx-auto mt-[13%] w-[300px]  justify-center  items-center min-h-screen bg-gray">
       <div className="mx-auto mb-12">
         <img src={logo} alt="logo" className=" mx-auto" />
-        <h3 className="mx-auto">Access to generative AI in your language</h3>
+        <h3 className="mx-auto text-[#fff]">Access to generative AI in your language</h3>
       </div>
       
-      <form onSubmit={handleSubmit} className ="bg-[#fff] rounded-xl border px-3 py-7 my-auto space-y-4 ">
-        <h1 className="text-sm">LOGIN</h1>
+      <form onSubmit={handleSubmit} className ="bg-[#fff] rounded-xl px-3 py-7 my-auto space-y-4 ">
+        <h1 className="text-xl ">LOGIN</h1>
         <p>
           <label>Username</label><br></br>
           <input

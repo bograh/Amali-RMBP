@@ -18,11 +18,9 @@ def translate_to_tw(input_text):
         "in": input_text,
         "lang": "en-tw"
     }
-
     response = requests.post(API_URL, json=body, headers=HEADERS)
     if response.status_code == 200:
-        translated_text = response.json()
-        text_to_speech(translated_text)
+        translated_text = response.text
         return translated_text
     print(f"Error: {response.text}")
 
@@ -35,7 +33,7 @@ def translate_to_en(input_text):
     }
     response = requests.post(API_URL, json=body, headers=HEADERS)
     if response.status_code == 200:
-        translated_text = response.json()
+        translated_text = response.text
         return translated_text
     print(f"Error: {response.text}")
 
@@ -56,7 +54,6 @@ def text_to_speech(input_text):
         print(f"Error: An error occured")
 
     return None
-
 
 def speech_to_text(file_path):
     api_url = "https://translation-api.ghananlp.org/asr/v1/transcribe?language=tw"

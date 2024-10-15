@@ -22,4 +22,4 @@ def prompt_llm(prompt):
     )
     return chat_completion.choices[0].message.content
 
-print(prompt_llm("Explain the importance of fast language models"))
+# print(prompt_llm("Explain the importance of fast language models"))

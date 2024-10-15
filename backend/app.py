@@ -1,23 +1,16 @@
-from flask import Flask, jsonify, render_template
-from routes import translate, swagger, llm
-
+from flask import Flask
+from flask_restful import Api
+from routes import swagger
+from routes.chat import Chat
+from routes.translate import Translate
 
 app = Flask(__name__)
+api = Api(app)
 
-app.register_blueprint(translate.bp)
-app.register_blueprint(llm.bp)
 app.register_blueprint(swagger.swagger_ui_blueprint, url_prefix=swagger.SWAGGER_URL)
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+api.add_resource(Chat, '/api/v1/chat')
+api.add_resource(Translate, '/api/v1/translate')
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
- 
-
-
-
-
-

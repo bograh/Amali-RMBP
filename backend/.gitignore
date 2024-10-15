@@ -1,10 +1,13 @@
 __pycache__
+_misc
 venv
+linuxenv
 snippets.py
 .env
 *.wav
 *.mp3
-django_api
+utils/prompt.py
+utils/translate_util.py
 static/audios/
 .vscode/* 
 !.vscode/settings.json 

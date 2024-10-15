@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import rmbpLogo from '../assets/logo.svg';
@@ -114,3 +115,16 @@ const Login = () => {
 };
 
 export default Login;
+=======
+import LoginComponent from "../components/LoginComponent"
+
+const Login = () => {
+  return (
+    <div>
+      <LoginComponent />
+    </div>
+  )
+}
+
+export default Login
+>>>>>>> dfde2d2f9c7b4a2066849b79435b2c0ead4318d4

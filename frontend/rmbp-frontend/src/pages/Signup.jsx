@@ -118,22 +118,19 @@ const Signup = () => {
           </button>
         </form>
         
-        <p className="mt-4 text-center text-sm text-gray-600">
-          Already have an account? <a href="/login" className="font-medium text-teal-600 hover:text-teal-500">Log in</a>
+        <p className=" text-center text-sm text-gray-600">
+          Already have an account? <a href="/login" className="underline font-medium text-teal-600 hover:text-teal-500">Log in</a>
         </p>
 
-        <div className="mt-6">
+        <div className="mt-1">
           <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
-            </div>
             <div className="relative flex justify-center text-sm">
               <span className="px-2 bg-teal-100 text-gray-500">OR</span>
             </div>
           </div>
           <button
             onClick={handleGoogleSignUp}
-            className="mt-4 w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+            className="mt-2 mb-4 mx-auto rounded-full flex justify-center items-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
           >
             <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google logo" className="w-5 h-5 mr-2" />
             Sign up with Google

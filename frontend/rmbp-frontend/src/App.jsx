@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
 import ChatPage from './pages/Chat';
 import Settings from './pages/Settings';
 import Signup from './pages/Signup';
+import Login from './pages/login';
 
 const App = () => {
   return (

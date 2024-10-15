@@ -3,7 +3,7 @@ import Header from '../components/Header';
 
 const ChatPage = () => {
   return (
-    <div id="chat-page" className="flex flex-col h-screen bg-gradient-to-b from-teal-700 to-teal-900 text-white">
+    <div id="chat-page" className="flex flex-col h-screen bg-gradient-to-bl from-[#004A4F] to-[#13cdbb] text-[#fff]">
       <Header />
       <main id="chat-main" className="flex-grow flex flex-col justify-center items-center p-4">
         <p id="chat-prompt" className="text-xl sm:text-2xl text-center">

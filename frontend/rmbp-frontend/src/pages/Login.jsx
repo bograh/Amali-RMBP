@@ -44,7 +44,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex bg-gradient-to-tr from-othergreen via-olive to-olive flex-col items-center justify-center min-h-screen bg-gray-700 p-4" >
+    <div className="flex bg-olive flex-col items-center justify-center min-h-screen bg-gray-700 p-4" >
       <div className="flex flex-col items-center mb-8">
         <img src={rmbpLogo} alt="rmbpLogo" className="h-16" />
         <p className="text-[#fff] text-center mt-2">Access to generative AI in your local language</p>

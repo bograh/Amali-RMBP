@@ -50,7 +50,7 @@ const Login = () => {
         <p className="text-[#fff] text-center mt-2">Access to generative AI in your local language</p>
       </div>
       
-      <div className="w-[300px] bg-[#fff] rounded-lg shadow-lg">
+      <div className="w-[350px] bg-[#fff] rounded-lg shadow-lg">
         <h2 className="text-2xl  rounded border-b shadow shadow-olive py-3 font-bold text-center text-olive mb-6">LOGIN</h2>
         <form onSubmit={handleSubmit} className="space-y-4 p-3 w-full">
           <div>
@@ -80,7 +80,7 @@ const Login = () => {
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <button
             type="submit"
-            className="w-full flex justify-center bg-olive text-[#fff] py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-[#fff] hover:text-olive focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+            className="w-full flex justify-center bg-olive text-[#fff] py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium bg-teal-600 hover:bg-[#fff] hover:text-olive focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
             disabled={loading}
           >
             {loading ? 'Signing in...' : 'Sign In'}

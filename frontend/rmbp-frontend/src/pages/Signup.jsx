@@ -1,4 +1,5 @@
-import { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import rmbpLogo from '../assets/logo.svg';
 
@@ -9,8 +10,38 @@ const Signup = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [passworderror, setPasswordError] = useState(false);
+  
 
   const navigate = useNavigate();
+
+  const signout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  }
+
+  const getTokenExpiration = (token) => {
+    if (!token) {
+        return true; 
+    }
+
+    try {
+        const decodedPayload = JSON.parse(atob(token.split(".")[1])); 
+        if (!decodedPayload.exp) {
+            return true;
+        }
+
+        const currentDate = Date.now();
+        const expiryTime = decodedPayload.exp * 1000; // Convert to ms
+
+        console.log("Current date: " + currentDate, "Expiry: " + expiryTime);
+
+        return currentDate >= expiryTime; // Return true if token is expired
+    } catch (error) {
+        console.error("Error decoding token:", error);
+        return true; // If there's an error, treat the token as expired
+    }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,6 +80,20 @@ const Signup = () => {
   const handleGoogleSignUp = () => {
     console.log('Google Sign-Up clicked');
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log("Token found:", token);
+
+    if (!token || getTokenExpiration(token)) {
+        console.log("No token or token expired, logging out...");
+        signout();
+    } else {
+        console.log("Token is valid, setting loading to false.");
+        setLoading(false);
+        console.log("Loading:", loading);
+    }
+}, []); 
 
   return (
     <div className="flex flex-col items-center bg-olive justify-center min-h-screen bg-gray-100 p-4">

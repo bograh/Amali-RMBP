@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import rmbpLogo from '../assets/logo.svg';
@@ -9,8 +10,15 @@ const Signup = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [passworderror, setPasswordError] = useState(false);
+  
 
   const navigate = useNavigate();
+
+  const password_validator = () => {
+    
+    return true;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();

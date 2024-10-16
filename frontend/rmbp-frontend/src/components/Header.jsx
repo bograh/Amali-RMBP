@@ -41,20 +41,20 @@ const Header = () => {
       </div>
 
       {/* Bottom line effect */}
-      <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-white opacity-40 blur-sm"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#fff] opacity-40 blur-sm"></div>
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-60 bg-gray-800 shadow-lg transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-60 bg-[#6f93a8] shadow-lg transition-transform duration-300 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="flex items-center justify-between p-4">
-          <h2 className="text-white text-lg">Sidebar</h2>
+          <h2 className="text-white mb-[-80px] text-lg">Chats</h2>
           <X className="w-6 h-6 text-white cursor-pointer" onClick={toggleSidebar} />
         </div>
         <div className="p-4">
-          <p className="text-white">Sidebar content goes here.</p>
+          <p className="text-white mt-[50px]">Sidebar content goes here.</p>
         </div>
       </div>
     </header>

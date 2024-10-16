@@ -32,14 +32,14 @@ const Login = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Login failed');
+        throw new Error(data.message || 'Login failed. Check Username or Password');
       }
 
       localStorage.setItem('token', data.access);
       console.log(data.access)
       navigate('/chat');
     } catch (err) {
-      setError(err.message || 'Login failed');
+      setError(err.message || 'Login failed. Check Username or Password');
     } finally {
       setLoading(false);
     }
@@ -117,7 +117,7 @@ const Login = () => {
               required
             />
           </div>
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && <p className="text-[#ff0000] pl-3 font-bold shadow-[#ff0000] rounded-md shadow p-2 text-sm">{error}</p>}
           <button
             type="submit"
             className="w-full flex justify-center bg-olive text-[#fff] py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium bg-teal-600 hover:bg-[#fff] hover:text-olive focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"

@@ -18,7 +18,7 @@ class Chat(Resource):
             llm_response = llm.prompt_llm(prompt)
             translated_llm_response = nlp.translate_to_tw(llm_response)
 
-            return {"prompt": msg, "response": translated_llm_response}
+            return {"status": "success", "response": translated_llm_response}
         
         except Exception as e:
             return {"status": "failed", "message": str(e)}, 500

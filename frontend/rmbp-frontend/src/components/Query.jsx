@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Send, Mic, X, Loader } from 'lucide-react';
-import ChatResponses from './ChatResponses';
+
+const BASE_URL = "http://16.171.19.134:5000/api/v1";
 
 const Query = () => {
   const [messages, setMessages] = useState([]);
@@ -30,19 +31,42 @@ const Query = () => {
     }
   }, [inputText]);
 
-  const handleSendMessage = () => {
+  const sendMessageToApi = async (message) => {
+    let url = `${BASE_URL}/chat`;
+    let body = { message };
+
+    if (message.startsWith('/translate: ')) {
+      url = `${BASE_URL}/translate`;
+      body = { text: message.replace('/translate: ', '') };
+    }
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+
+      const data = await response.json();
+      return message.startsWith('/translate: ') ? data.translated_text : data.response;
+    } catch (error) {
+      console.error("Error:", error);
+      return "Error in fetching response. Please try again.";
+    }
+  };
+
+  const handleSendMessage = async () => {
     if (inputText.trim()) {
       const newMessage = { type: 'sender', content: inputText };
       setMessages([...messages, newMessage]);
       setInputText('');
       setIsLoading(true);
-      
-      // Simulate receiving a response
-      setTimeout(() => {
-        const response = ChatResponses.getResponse();
-        setMessages(prevMessages => [...prevMessages, { type: 'receiver', content: response }]);
-        setIsLoading(false);
-      }, 2000);
+
+      const responseMessage = await sendMessageToApi(inputText);
+      setMessages(prevMessages => [...prevMessages, { type: 'receiver', content: responseMessage }]);
+      setIsLoading(false);
     }
   };
 

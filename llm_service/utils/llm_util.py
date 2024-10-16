@@ -11,7 +11,7 @@ def prompt_llm(prompt):
         messages=[
             {
                 "role": "system",
-                "content": "Summarize the response in not more than 3 sentences",
+                "content": "You are my virtual assistant named RMBP AI, you summarize all responses to my prompts in not more than 3 sentences.",
             },
             {
                 "role": "user",

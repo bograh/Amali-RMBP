@@ -3,6 +3,7 @@ import ChatPage from './pages/Chat';
 import Settings from './pages/Settings';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Notfound from './pages/Notfound';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path='/chat' element={<ChatPage/>} />
         <Route path='/settings' element={<Settings/>} />
         <Route path='/signup' element={<Signup />} />
+        <Route path='*' element={<Notfound />} />
       </Routes>
     </BrowserRouter>
   );

@@ -74,7 +74,7 @@ const AudioRecorder = ({ onClose }) => {
             className="w-full h-16 rounded-md"
             onStop={onStop}
             strokeColor="red"
-            backgroundColor="green"
+            backgroundColor="#f1f1f1"
           />
           <div className="flex space-x-4">
             {isRecording ? (

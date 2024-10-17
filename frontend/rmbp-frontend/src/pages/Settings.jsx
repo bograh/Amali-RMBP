@@ -40,7 +40,7 @@ const Settings = () => {
     if (!token || getTokenExpiration(token)) {
       logout();
     } else {
-      navigate("/chat");
+      navigate("/settings");
     }
   }, [navigate]);
 

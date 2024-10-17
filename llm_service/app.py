@@ -4,7 +4,6 @@ from flask_cors import CORS
 from routes import swagger
 from routes.chat import Chat, AudioChat, Person
 from routes.translate import Translate
-from utils.jwt_utils import jwt_required
 
 app = Flask(__name__)
 api = Api(app)

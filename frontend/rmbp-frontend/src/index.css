@@ -21,6 +21,6 @@
 
   @layer components{
     .background {
-      background-image: url('../public/p6.png');
+      background-image: url('../public/cool-background.png');
     }
   }

@@ -60,14 +60,15 @@ const AudioRecorder = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-[#393838] bg-opacity-50 flex items-center justify-center">
-      <div className="bg-[#606769] rounded-lg p-8 w-96 relative">
+    <div className="fixed inset-0 bg-olive bg-opacity-50 flex items-center justify-center">
+      <div className="bg-olive rounded-lg p-8 w-96 relative">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-[#333434] hover:text-[#3c4a49]"
+          className="absolute top-2 right-2 mr-2 mt-2 text-[#333434] hover:text-[#3c4a49]"
         >
           <X className="w-6 h-6" />
         </button>
+        <h2 className="text-[#333434] text-lg font-semibold mb-4">Press to start talking</h2>
         <div className="flex flex-col items-center mt-[60px] space-y-4">
           <ReactMic
             record={isRecording && !isPaused}
@@ -77,11 +78,12 @@ const AudioRecorder = ({ onClose }) => {
             backgroundColor="#f1f1f1"
           />
           <div className="flex space-x-4">
+
             {isRecording ? (
               <>
                 <button
                   onClick={togglePause}
-                  className="bg-[#8989dfdd] text-[#000] rounded-full p-2 transition-transform duration-300 ease-in-out transform hover:scale-110"
+                  className="bg-sage text-[#000] rounded-full p-2 transition-transform duration-300 ease-in-out transform hover:scale-110"
                 >
                   {isPaused ? <Play className="w-6 h-6" /> : <Pause className="w-6 h-6" />}
                 </button>
@@ -132,8 +134,6 @@ const AudioRecorder = ({ onClose }) => {
     </div>
   );
 };
-
-
 
 
 AudioRecorder.propTypes = {

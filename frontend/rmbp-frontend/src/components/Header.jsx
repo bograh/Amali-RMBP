@@ -1,4 +1,4 @@
-import { Menu, Settings, X, LogOut } from 'lucide-react';
+import { Settings, X, LogOut } from 'lucide-react';
 import rmbpLogo from '../assets/logo.svg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

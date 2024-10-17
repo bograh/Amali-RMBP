@@ -8,7 +8,7 @@ export default {
     colors: {
       background : '#3c3c3c',
       olive: '#004a4f',
-      othergreen: '#00ff44',
+      sage: '#cac097',
       red: '#ff6666',
 
     },

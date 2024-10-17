@@ -17,7 +17,7 @@ const Signup = () => {
 
   const signout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/signup");
   }
 
   const getTokenExpiration = (token) => {

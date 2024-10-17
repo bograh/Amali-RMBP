@@ -27,16 +27,16 @@ const Header = () => {
         <img
           src={rmbpLogo}
           alt="RMBP AI Logo"
-          className="ml-8 h-12 cursor-pointer"
+          className="ml-8 h-12 my-auto cursor-pointer"
           onClick={refreshPage}
         />
         
         <span className='flex mr-4'>
         {/* Settings Button */}
-        <Settings className="w-6 h-6 mr-4 text-white cursor-pointer" onClick={goToSettings} />
+        <Settings className="w-7 h-7 mr-4 text-white cursor-pointer" onClick={goToSettings} />
 
         {/*Sign out */}
-        <LogOut className='text-[#fff] cursor-pointer  ' onClick={signout}/>
+        <LogOut className='text-[#fff] w-7 h-7 cursor-pointer my-auto  ' onClick={signout}/>
         </span>
       
       </div>

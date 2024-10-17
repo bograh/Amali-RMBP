@@ -103,7 +103,7 @@ const Signup = () => {
       </div>
       
       <div className="w-[350px] bg-[#fff] rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold py-3 shadow shadow-olive text-center text-olive mb-6">SIGN UP</h2>
+        <h2 className="text-2xl font-bold py-3 shadow shadow-sage text-center text-olive mb-6">SIGN UP</h2>
         <form onSubmit={handleSubmit} className="space-y-4 w-full p-3">
           <div>
             <label htmlFor="username" className="block text-md font-medium text-gray-700">Username</label>
@@ -112,7 +112,7 @@ const Signup = () => {
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+              className="mt-1 block w-full p-2 rounded-md outline-none shadow-sm focus:border-sage focus:border"
               placeholder="Enter username"
               required
             />
@@ -124,7 +124,7 @@ const Signup = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+              className="mt-1 block w-full p-2 rounded-md outline-none shadow-sm focus:border-sage focus:border"
               placeholder="Enter email"
               required
             />
@@ -136,7 +136,7 @@ const Signup = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+              className="mt-1 block w-full p-2 rounded-md shadow-sm focus:border-sage focus:border outline-none"
               placeholder="Enter password"
               required
             />
@@ -148,7 +148,7 @@ const Signup = () => {
               id="passwordConfirm"
               value={passwordConfirm}
               onChange={(e) => setPasswordConfirm(e.target.value)}
-              className="mt-1 block p-2 w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+              className="mt-1 block p-2 w-full rounded-md border-gray-300 shadow-sm focus:border-sage focus:border outline-none"
               placeholder="Confirm password"
               required
             />
@@ -156,7 +156,7 @@ const Signup = () => {
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <button
             type="submit"
-            className="w-full outline-none text-md flex justify-center p-2 py-2 px-4 border border-transparent rounded-md shadow-sm font-medium text-[#fff] bg-olive hover:bg-[#fff] hover:text-[#000] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+            className="w-full outline-none text-md flex justify-center p-2 py-2 px-4 border border-transparent rounded-md shadow-sm font-medium text-[#fff] bg-sage hover:bg-[#fff] hover:text-olive focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
             disabled={loading}
           >
             {loading ? 'Signing up...' : 'Sign Up'}
@@ -175,7 +175,7 @@ const Signup = () => {
           </div>
           <button
             onClick={handleGoogleSignUp}
-            className="mt-2 mb-4 mx-auto rounded-full flex justify-center items-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+            className="mt-2 mb-4 mx-auto rounded-full px-4 flex justify-center items-center py-2 shadow-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none "
           >
             <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google logo" className="w-5 h-5 mr-2" />
             Sign up with Google

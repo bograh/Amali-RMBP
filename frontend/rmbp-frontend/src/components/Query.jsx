@@ -88,13 +88,13 @@ const Query = () => {
           {messages.map((message, index) => (
             <div 
               key={index} 
-              className={`mb-4 ${message.type === 'sender' ? 'flex justify-end' : 'flex justify-start'}`}
+              className={`mb-2  ${message.type === 'sender' ? 'flex justify-end' : 'flex justify-start'}`}
             >
               <div 
-                className={`inline-block rounded-lg p-3 break-words ${
+                className={`inline-block rounded-2xl p-3 break-words ${
                   message.type === 'sender' 
                     ? 'bg-[#2b9997] text-[#fff]' 
-                    : 'bg-[#1f7271] text-[#fff]'
+                    : 'bg-sage text-[#fff]'
                 }`}
                 style={{
                   maxWidth: '70%',
@@ -107,7 +107,7 @@ const Query = () => {
           ))}
           {isLoading && (
             <div className="flex justify-start mb-4">
-              <div className="bg-[#1f7271] text-[#fff] rounded-lg p-3">
+              <div className="bg-sage text-[#fff] rounded-lg p-3">
                 <Loader className="animate-spin" />
               </div>
             </div>
@@ -126,24 +126,24 @@ const Query = () => {
       value={inputText}
       onChange={(e) => setInputText(e.target.value)}
       onKeyDown={handleKeyDown}
-      placeholder="Ask me anything ..."
-      className="flex-grow p-2 sm:p-3 shadow-md shadow-olive border-olive bg-white rounded overflow-y-auto text-black placeholder-gray-500 outline-none text-sm sm:text-base resize-none overflow-hidden min-h-[20px] max-h-[200px]"
+      placeholder="Ask me anything..."
+      className="flex-grow p-2 sm:p-3 shadow-md shadow-olive border-olive bg-white rounded overflow-y-auto text-black placeholder-gray-500 outline-none text-sm sm:text-base resize-none overflow-hidden min-h-[20px] max-h-[200px] hover:shadow-md hover:shadow-sage"
       style={{ paddingRight: "40px" }}
     />
     <button
       onClick={handleSendMessage}
       disabled={!inputText.trim()}
-      className={`p-1 sm:p-2 ml-3 sm:mr-[6px] bg-[#004A4F] text-white rounded-full flex items-center justify-center ${
+      className={`p-2 sm:p-2 ml-3 sm:mr-[6px] bg-[#004A4F] text-white rounded-full flex items-center hover:bg-sage  justify-center ${
         !inputText.trim() ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >
-      <Send className="w-6 h-6 sm:w-8 sm:h-8 mr-1 text-[#fff]" />
+      <Send className="w-6 h-6 sm:w-7 sm:h-7 mr-1 text-[#fff] hover:text-olive" />
     </button>
     <button
       onClick={toggleRecording}
-      className="p-1 sm:p-2 ml-3 bg-transparent rounded-full border bg-olive text-[#fff]"
+      className="p-2 sm:p-2 ml-3 bg-transparent rounded-full border bg-olive text-[#fff] hover:bg-sage"
     >
-      <Mic className="w-6 h-6 sm:w-8 sm:h-8 text-[#fff]" />
+      <Mic className="w-6 h-6 sm:w-7 sm:h-7 text-[#fff] hover:text-olive" />
     </button>
   </div>
 </div>

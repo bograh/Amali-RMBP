@@ -100,7 +100,7 @@ const Login = () => {
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+              className="mt-1 block w-full p-2 rounded-md outline-none shadow-sm focus:border-sage focus:border"
               placeholder="Enter username"
               required
             />
@@ -112,7 +112,7 @@ const Login = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-500 focus:ring-opacity-50"
+              className="mt-1 p-2 block w-full rounded-md border-gray-300 outline-none shadow-sm focus:border-sage focus:border"
               placeholder="Enter password"
               required
             />
@@ -120,7 +120,7 @@ const Login = () => {
           {error && <p className="text-[#ff0000] pl-3 font-bold shadow-[#ff0000] rounded-md shadow p-2 text-sm">{error}</p>}
           <button
             type="submit"
-            className="w-full flex justify-center bg-olive text-[#fff] py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium hover:bg-sage hover:text-olive focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+            className="w-full flex justify-center bg-sage text-[#fff] py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium hover:bg-[#fff] hover:text-olive"
             disabled={loading}
           >
             {loading ? 'Signing in...' : 'Sign In'}

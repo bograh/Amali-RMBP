@@ -84,7 +84,7 @@ const Query = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="flex-grow overflow-y-auto p-4">
-        <div className="max-w-4xl mx-auto">
+        <div className=" max-w-4xl mx-auto">
           {messages.map((message, index) => (
             <div 
               key={index} 
@@ -117,31 +117,37 @@ const Query = () => {
       </div>
       
       <div className="w-full p-4 flex justify-center">
-        <div ref={inputContainerRef} className="w-full max-w-4xl relative flex items-end bg-gradient-to-b from-transparent to-[#97FFB3] rounded-full p-2 text-[#000] transition-all duration-300">
-          <textarea
-            ref={inputRef}
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Ask me anything ..."
-            className="flex-grow p-2 sm:p-3 bg-white rounded overflow-y-auto text-black placeholder-gray-500 outline-none pr-12 text-sm sm:text-base resize-none overflow-hidden min-h-[20px] max-h-[200px]"
-            style={{paddingRight: '40px'}}
-          />
-          <button
-            onClick={handleSendMessage}
-            disabled={!inputText.trim()}
-            className={`p-1 sm:p-2 sm:mr-[6px] bg-[#004A4F] text-white rounded-full absolute right-2 bottom-2 flex items-center justify-center ${!inputText.trim() ? 'opacity-50 cursor-not-allowed' : ''}`}
-          >
-            <Send className="w-4 h-4 sm:w-6 sm:h-6 mr-2 sm:mr-2 ml-1 sm:ml-2 text-[#fff]" />
-          </button>
-        </div>
-        <button
-          onClick={toggleRecording}
-          className="p-1 sm:p-2 ml-2 bg-transparent text-[#fff]"
-        >
-          <Mic className="w-6 h-6 sm:w-8 sm:h-8" />
-        </button>
-      </div>
+  <div
+    ref={inputContainerRef}
+    className=" w-full max-w-4xl relative flex items-center bg-gradient-to-b from-transparent to-[#97FFB3] rounded-full p-2 text-[#000] transition-all duration-300"
+  >
+    <textarea
+      ref={inputRef}
+      value={inputText}
+      onChange={(e) => setInputText(e.target.value)}
+      onKeyDown={handleKeyDown}
+      placeholder="Ask me anything ..."
+      className="flex-grow p-2 sm:p-3 shadow-md shadow-olive border-olive bg-white rounded overflow-y-auto text-black placeholder-gray-500 outline-none text-sm sm:text-base resize-none overflow-hidden min-h-[20px] max-h-[200px]"
+      style={{ paddingRight: "40px" }}
+    />
+    <button
+      onClick={handleSendMessage}
+      disabled={!inputText.trim()}
+      className={`p-1 sm:p-2 ml-3 sm:mr-[6px] bg-[#004A4F] text-white rounded-full flex items-center justify-center ${
+        !inputText.trim() ? "opacity-50 cursor-not-allowed" : ""
+      }`}
+    >
+      <Send className="w-6 h-6 sm:w-8 sm:h-8 mr-1 text-[#fff]" />
+    </button>
+    <button
+      onClick={toggleRecording}
+      className="p-1 sm:p-2 ml-3 bg-transparent rounded-full border bg-olive text-[#fff]"
+    >
+      <Mic className="w-6 h-6 sm:w-8 sm:h-8 text-[#fff]" />
+    </button>
+  </div>
+</div>
+
 
       {isRecording && <AudioRecorder onClose={toggleRecording} />}
     </div>

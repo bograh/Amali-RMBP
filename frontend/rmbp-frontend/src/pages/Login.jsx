@@ -91,7 +91,7 @@ const Login = () => {
       </div>
       
       <div className="w-[350px] bg-[#fff] rounded-lg shadow-lg">
-        <h2 className="text-2xl  rounded border-b shadow shadow-olive py-3 font-bold text-center text-olive mb-6">LOGIN</h2>
+        <h2 className="text-2xl  rounded shadow-md shadow-sage py-3 font-bold text-center text-olive mb-6">LOGIN</h2>
         <form onSubmit={handleSubmit} className="space-y-4 p-3 w-full">
           <div>
             <label htmlFor="username" className="block text-md font-medium text-gray-700">Username</label>
@@ -120,7 +120,7 @@ const Login = () => {
           {error && <p className="text-[#ff0000] pl-3 font-bold shadow-[#ff0000] rounded-md shadow p-2 text-sm">{error}</p>}
           <button
             type="submit"
-            className="w-full flex justify-center bg-olive text-[#fff] py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium bg-teal-600 hover:bg-[#fff] hover:text-olive focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+            className="w-full flex justify-center bg-olive text-[#fff] py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium hover:bg-sage hover:text-olive focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
             disabled={loading}
           >
             {loading ? 'Signing in...' : 'Sign In'}

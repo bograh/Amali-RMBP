@@ -47,9 +47,9 @@ const Login = () => {
     }
   };
 
-  const handleGoogleSignIn = () => {
-    console.log('Google Sign-In clicked');
-  };
+  // const handleGoogleSignIn = () => {
+  //   console.log('Google Sign-In clicked');
+  // };
 
   const getTokenExpiration = (token) => {
     if (!token) {
@@ -127,11 +127,11 @@ const Login = () => {
           </button>
         </form>
         
-        <p className="text-center text-sm text-gray-600">
+        <p className="text-center text-sm mb-4 text-gray-600">
           Don&apos;t have an account? <a href="/signup" className="underline font-medium ">Sign up</a>
         </p>
 
-        <div className="mt-3">
+        {/* <div className="mt-3">
           <div className="relative">
                     <div className="relative flex justify-center text-sm">
               <span className="px-2 bg-teal-100 text-gray-500">OR</span>
@@ -144,7 +144,7 @@ const Login = () => {
             <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google logo" className="w-5 h-5 mr-2" />
             Sign in with Google
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

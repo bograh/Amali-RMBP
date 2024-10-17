@@ -163,12 +163,12 @@ const Signup = () => {
           </button>
         </form>
         
-        <p className=" text-center text-sm text-gray-600">
+        <p className=" text-center text-sm mb-4 text-gray-600">
           Already have an account? <a href="/login" className="underline font-medium text-teal-600 hover:text-teal-500">Log in</a>
         </p>
 
         <div className="mt-1">
-          <div className="relative">
+          {/* <div className="relative">
             <div className="relative flex justify-center text-sm">
               <span className="px-2 bg-teal-100 text-gray-500">OR</span>
             </div>
@@ -179,7 +179,7 @@ const Signup = () => {
           >
             <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google logo" className="w-5 h-5 mr-2" />
             Sign up with Google
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

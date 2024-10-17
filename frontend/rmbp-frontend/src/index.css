@@ -18,3 +18,9 @@
     background: #0e9595;
     border-radius: 10px;
   }
+
+  @layer components{
+    .background {
+      background-image: url('../public/p6.png');
+    }
+  }

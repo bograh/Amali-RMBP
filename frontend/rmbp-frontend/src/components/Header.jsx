@@ -1,4 +1,4 @@
-import { Menu, Settings, X } from 'lucide-react';
+import { Menu, Settings, X, LogOut } from 'lucide-react';
 import rmbpLogo from '../assets/logo.svg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,11 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
+
+  const signout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+}
 
   // Function to toggle sidebar visibility
   const toggleSidebar = () => {
@@ -24,24 +29,27 @@ const Header = () => {
 
   return (
     <header className="relative">
-      <div className="flex items-center justify-between p-4">
-        {/* Menu Button */}
-        <Menu className="w-6 h-6 text-white cursor-pointer" onClick={toggleSidebar} />
+      <div className="flex bg-olive items-center justify-between p-4">
         
         {/* Logo Button */}
         <img
           src={rmbpLogo}
           alt="RMBP AI Logo"
-          className="h-12 cursor-pointer"
+          className="ml-8 h-12 cursor-pointer"
           onClick={refreshPage}
         />
         
+        <span className='flex mr-4'>
         {/* Settings Button */}
-        <Settings className="w-6 h-6 text-white cursor-pointer" onClick={goToSettings} />
+        <Settings className="w-6 h-6 mr-4 text-white cursor-pointer" onClick={goToSettings} />
+
+        {/*Sign out */}
+        <LogOut className='text-[#fff] cursor-pointer  ' onClick={signout}/>
+        </span>
+      
       </div>
 
-      {/* Bottom line effect */}
-      <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#fff] opacity-40 blur-sm"></div>
+
 
       {/* Sidebar */}
       <div

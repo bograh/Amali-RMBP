@@ -55,7 +55,7 @@ useEffect(() => {
 
 
   return (
-    <div id="chat-page" className="flex flex-col h-screen overflow-y-auto bg-gradient-to-bl from-[#004A4F] to-[#13cdbb] text-[#fff]">
+    <div id="chat-page" className="flex flex-col h-screen overflow-y-auto background text-[#fff]">
       <Header />
       <main id="chat-main" className="flex-grow flex flex-col p-4">
         <Query />

@@ -97,7 +97,7 @@
       "post": {
         "summary": "Send a message for translation and LLM response",
         "operationId": "promptInTwi",
-        "description": "Translates a message from English to twi and gets a response from the language model.",
+        "description": "Submit a prompt in Twi and get your response back in Twi.",
         "requestBody": {
           "required": true,
           "content": {
@@ -140,6 +140,92 @@
           }
         }
       }
-    }
+    },
+    "/api/v1/chat/voice": {
+      "post": {
+        "summary": "Send an audio message for translation and LLM response",
+        "operationId": "audioPromptInTwi",
+        "description": "Send a voice prompt in Twi and get your response as a voice note.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "audio_message": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "audio_message"
+                ]
+              },
+              "encoding": {
+                "audio_message": {
+                  "contentType": [
+                    "audio/mpeg",
+                    "audio/wav"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Voice prompt sent successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "msg_id": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Fetch the audio response for the prompt",
+        "operationId": "audioResponseInTwi",
+        "description": "Receive audio response.",
+        "parameters": [
+          {"msg_id": "Pass message id"}
+        ],
+        "responses": {
+          "200": {
+            "description": "Voice response received",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "msg_id": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }    
   }
 }

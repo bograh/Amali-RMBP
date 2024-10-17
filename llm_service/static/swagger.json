@@ -5,6 +5,20 @@
     "version": "1.0.0",
     "description": "API for text and audio translation."
   },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
   "paths": {
     "/api/v1/translate": {
       "post": {
@@ -201,7 +215,12 @@
         "operationId": "audioResponseInTwi",
         "description": "Receive audio response.",
         "parameters": [
-          {"msg_id": "Pass message id"}
+          {
+            "name": "msg_id",
+            "in": "query",
+            "required": true,
+            "description": "Pass message id"
+          }
         ],
         "responses": {
           "200": {
@@ -215,7 +234,7 @@
                       "type": "string",
                       "example": "success"
                     },
-                    "msg_id": {
+                    "response_audio_path": {
                       "type": "string",
                       "example": "string"
                     }

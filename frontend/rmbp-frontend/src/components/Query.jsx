@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Send, Mic, X, Loader } from 'lucide-react';
+import { Send, Mic, Loader } from 'lucide-react';
+import AudioRecorder from './AudioRecorder';
 
 const BASE_URL = "http://16.171.19.134:5000/api/v1";
 
@@ -24,7 +25,6 @@ const Query = () => {
       inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
     }
     
-    // Update input container shape based on content
     if (inputContainerRef.current) {
       const isMultiline = inputRef.current.scrollHeight > 40;
       inputContainerRef.current.style.borderRadius = isMultiline ? '20px' : '9999px';
@@ -84,34 +84,40 @@ const Query = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="flex-grow overflow-y-auto p-4">
-        {messages.map((message, index) => (
-          <div 
-            key={index} 
-            className={`mb-4 ${message.type === 'sender' ? 'text-right mr-[180px]' : 'text-left ml-[270px]'}`}
-          >
+        <div className="max-w-4xl mx-auto">
+          {messages.map((message, index) => (
             <div 
-              className={`inline-block rounded-lg p-3 w-[40%] break-words ${
-                message.type === 'sender' 
-                  ? 'bg-[#2b9997] text-[#fff]' 
-                  : 'bg-[#1f7271] text-[#fff]'
-              }`}
+              key={index} 
+              className={`mb-4 ${message.type === 'sender' ? 'flex justify-end' : 'flex justify-start'}`}
             >
-              {message.content}
+              <div 
+                className={`inline-block rounded-lg p-3 break-words ${
+                  message.type === 'sender' 
+                    ? 'bg-[#2b9997] text-[#fff]' 
+                    : 'bg-[#1f7271] text-[#fff]'
+                }`}
+                style={{
+                  maxWidth: '70%',
+                  width: 'fit-content'
+                }}
+              >
+                {message.content}
+              </div>
             </div>
-          </div>
-        ))}
-        {isLoading && (
-          <div className="flex justify-start mb-4 ml-[270px]">
-            <div className="bg-[#1f7271] text-[#fff] rounded-lg p-3">
-              <Loader className="animate-spin" />
+          ))}
+          {isLoading && (
+            <div className="flex justify-start mb-4">
+              <div className="bg-[#1f7271] text-[#fff] rounded-lg p-3">
+                <Loader className="animate-spin" />
+              </div>
             </div>
-          </div>
-        )}
-        <div ref={messagesEndRef} />
+          )}
+          <div ref={messagesEndRef} />
+        </div>
       </div>
       
       <div className="w-full p-4 flex justify-center">
-        <div ref={inputContainerRef} className="w-[80%] md:w-[55%] relative flex items-end bg-gradient-to-b from-transparent to-[#97FFB3] rounded-full p-2 text-[#000] transition-all duration-300">
+        <div ref={inputContainerRef} className="w-full max-w-4xl relative flex items-end bg-gradient-to-b from-transparent to-[#97FFB3] rounded-full p-2 text-[#000] transition-all duration-300">
           <textarea
             ref={inputRef}
             value={inputText}
@@ -137,25 +143,7 @@ const Query = () => {
         </button>
       </div>
 
-      {isRecording && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-[#fff] rounded-lg p-6 flex flex-col items-center">
-            <button
-              onClick={toggleRecording}
-              className="self-end text-[#000]"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <p className="text-[#000] mb-4">Click mic to start recording</p>
-            <button
-              onClick={toggleRecording}
-              className="bg-[#004A4F] text-[#fff] rounded-full p-4"
-            >
-              <Mic className="w-12 h-12" />
-            </button>
-          </div>
-        </div>
-      )}
+      {isRecording && <AudioRecorder onClose={toggleRecording} />}
     </div>
   );
 };

@@ -10,13 +10,10 @@ JWT_SECRET = os.getenv('JWT_SECRET')
 def verify_jwt(token):
     try:
         decoded = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
-        print(decoded)
         return decoded
     except jwt.ExpiredSignatureError:
-        print("Token Expired")
         return None
     except jwt.InvalidTokenError:
-        print("Token Invalid")
         return None
 
 

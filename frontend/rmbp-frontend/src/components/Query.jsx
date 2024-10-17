@@ -12,6 +12,7 @@ const Query = () => {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const inputContainerRef = useRef(null);
+  const token = localStorage.getItem("token");
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -45,6 +46,7 @@ const Query = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(body),
       });

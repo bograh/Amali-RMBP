@@ -7,8 +7,10 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -74,8 +76,6 @@ const Login = () => {
   
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
     if (!token || getTokenExpiration(token)) {
       logout();
     } else {

@@ -1,8 +1,10 @@
 from flask import request
 from flask_restful import Resource
 from utils import ghana_nlp_utils as nlp
+from utils.jwt_utils import jwt_required
 
 class Translate(Resource):
+    @jwt_required
     def post(self):
         try:
             data = request.get_json()

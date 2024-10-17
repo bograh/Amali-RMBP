@@ -1,12 +1,16 @@
 import os
+import threading
+import time
 from uuid import uuid4
 from flask import request
 from flask_restful import Resource
 from utils import ghana_nlp_utils as nlp
 from utils import llm_util as llm
-from models.message import db, Message
+from utils.jwt_utils import jwt_required
+from utils.process_audio import process_audio
 
 class Chat(Resource):
+    @jwt_required
     def post(self):
         data = request.get_json()
         if not data:
@@ -27,18 +31,10 @@ class Chat(Resource):
             return {"status": "failed", "message": str(e)}, 500
 
 
-# def add_message():
-#     user_id = 10000
-
-#     new_message = Message(user_id=user_id)
-#     db.session.add(new_message)
-#     db.session.commit()
-
-#     return {"status": "success", "message_id": new_message.id}, 201
-
 class AudioChat(Resource):
+    @jwt_required
     def post(self):
-        _file_id = uuid4()
+        _file_id = str(uuid4())
         input_dir = 'static/audios/input/'
         output_dir = 'static/audios/output/'
 
@@ -46,20 +42,30 @@ class AudioChat(Resource):
         os.makedirs(output_dir, exist_ok=True)
 
         file_path_input = os.path.join(input_dir, f"{_file_id}.mp3")
-        file_path_output = os.path.join(input_dir, f"{_file_id}.mp3")
         file = request.files.get("audio_message")
 
         if not file:
-            return {"status": "failed", "message": "No file sent"}, 400
+            return {"status": "failed", "message": "No message sent"}, 400
+
         file.save(file_path_input)
+        file_path_output = os.path.join(output_dir, f"{_file_id}.mp3")
 
-        try:
-            msg = nlp.speech_to_text(file_path_input)
-            # print(msg) # Debugging line
-            prompt = nlp.translate_to_en(msg)
-            llm_response = llm.prompt_llm(prompt)
-            translated_llm_response = nlp.translate_to_tw(llm_response)
+        threading.Thread(target=process_audio, args=(file_path_input, file_path_output)).start()
 
-            return {"status": "success", "response": translated_llm_response}
-        except Exception as e:
-            return {"status": "failed", "message": str(e)}, 500
+        return {"status": "processing", "msg_id": _file_id}, 202
+
+    @jwt_required        
+    def get(self):
+        msg_id = request.args.get('msg_id')
+        file_path = f"static/audios/output/{msg_id}.mp3"
+
+        while not os.path.exists(file_path):
+            time.sleep(1)
+
+        return {"status": "completed", "file_path": file_path}, 200
+
+
+class Person(Resource):
+    @jwt_required
+    def get(self):
+        return {"username": "Jack", "id": str(uuid4())}

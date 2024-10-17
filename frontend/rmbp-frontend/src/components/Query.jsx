@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Send, Mic, X, Loader } from 'lucide-react';
+import { Send, Mic, Loader } from 'lucide-react';
+import AudioRecorder from './AudioRecorder';
 
 const BASE_URL = "http://16.171.19.134:5000/api/v1";
 
@@ -142,25 +143,7 @@ const Query = () => {
         </button>
       </div>
 
-      {isRecording && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-[#fff] rounded-lg p-6 flex flex-col items-center">
-            <button
-              onClick={toggleRecording}
-              className="self-end text-[#000]"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <p className="text-[#000] mb-4">Click mic to start recording</p>
-            <button
-              onClick={toggleRecording}
-              className="bg-[#004A4F] text-[#fff] rounded-full p-4"
-            >
-              <Mic className="w-12 h-12" />
-            </button>
-          </div>
-        </div>
-      )}
+      {isRecording && <AudioRecorder onClose={toggleRecording} />}
     </div>
   );
 };

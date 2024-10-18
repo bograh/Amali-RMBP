@@ -90,7 +90,7 @@ const AudioRecorder = ({ onClose, onAudioSent }) => {
       const filePath = voiceData.file_path;
 
       // Call the onAudioSent callback with the audio URL
-      onAudioSent(audioUrl, `http://16.171.19.134:5000${filePath}`);
+      onAudioSent(audioUrl, `http://16.171.19.134:5000/${filePath}`);
 
       // Close the AudioRecorder component
       onClose();

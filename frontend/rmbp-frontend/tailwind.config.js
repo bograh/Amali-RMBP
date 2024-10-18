@@ -7,13 +7,17 @@ export default {
   theme: {
     colors: {
       background : '#3c3c3c',
-      fonts: '#ffecc8',
       olive: '#004a4f',
-      lightgreen: '#00ff44',
+      sage: '#cac097',
       red: '#ff6666',
 
     },
-    extend: {},
+    extend: {
+
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      }
+    },
   },
   plugins: [],
 }

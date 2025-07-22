@@ -2,6 +2,7 @@ models
 __pycache__
 _misc
 venv
+env
 linuxenv
 snippets.py
 .env

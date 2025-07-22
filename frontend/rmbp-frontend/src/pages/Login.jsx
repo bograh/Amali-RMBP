@@ -23,7 +23,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await fetch('http://16.171.19.134:8000/api/signin/', {
+      const response = await fetch('http://127.0.0.1:8000/api/signin/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

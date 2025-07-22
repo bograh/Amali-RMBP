@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Send, Mic, Loader, Play, Pause } from 'lucide-react';
 import AudioRecorder from './AudioRecorder';
 
-const BASE_URL = "http://16.171.19.134:5000/api/v1";
+const BASE_URL = "http://127.0.0.1:5000/api/v1";
 
 const Query = () => {
   const [messages, setMessages] = useState([]);

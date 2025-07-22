@@ -69,7 +69,7 @@ const AudioRecorder = ({ onClose, onAudioSent }) => {
     formData.append('audio_message', recordedBlob, 'recorded_audio.mp3');
 
     try {
-      const response = await fetch('http://16.171.19.134:5000/api/v1/chat/voice', {
+      const response = await fetch('http://127.0.0.1:5000/api/v1/chat/voice', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
